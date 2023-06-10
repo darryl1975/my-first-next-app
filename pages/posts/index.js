@@ -13,7 +13,9 @@ function PostList({ posts }) {
                         return (
                             <Card className="card text-bg-light mb-3">
                                 <Row key={post.id} justify="center" aligh="center">
-                                    <Text h2 size={15} color="black">{post.id} {post.title}</Text>
+                                    <Link href={`posts/${post.id}`} passHref>
+                                        <Text h2 size={15} color="black">{post.id} {post.title}</Text>
+                                    </Link>
                                 </Row>
                             </Card>
                         )
@@ -33,7 +35,7 @@ export async function getStaticProps() {
 
     return {
         props: {
-            posts: data
+            posts: data.slice(0, 3)
         }
     }
 }
